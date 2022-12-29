@@ -1,0 +1,336 @@
+.header-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* border: 1px solid red; */
+}
+
+.header-back {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    height: 195px;
+    left: 0px;
+    top: 0px;
+    margin: 0 auto;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    
+} 
+
+ .header-back--red {
+    position: absolute;
+    width: 100%;
+    height: 90.18px;
+    left: 0px;
+    top: 0px;
+    background: #DD1A1A;
+
+}
+
+.header-back--black {
+    position: absolute;
+    width: 100%;
+    height: 49.7px;
+    left: 0px;
+    top: 90.3px;
+    background: #0C0C0C;
+  
+}
+
+.header-back--img {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    object-fit: contain;
+    background-size: contain;
+    /* ver imagen completa */
+    left: 15px;
+    top: 20px;
+
+} 
+
+
+
+ .header-title {
+    position: relative;
+    max-width: 882px;
+    height: 40px;
+    /* left: 143px; */
+    /* top: 195px; */
+    font-family: 'Roboto' sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    display: block;
+    margin-top: 8em;
+    margin-bottom: 1.5em;
+    align-self: start;
+}
+
+.header-title--span {
+    color: #FE1936;
+}
+
+.headerSearch-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.header-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.inputSug {
+    position: relative;
+    width: 290px;
+    height: 45px;
+    font-size: 1.2em;
+    border-radius: 2em;
+}
+
+
+
+.form__btn {
+    position: relative;
+    width: 210.48px;
+    height: 40px;
+    background: #D93F3F;
+    color: #fff;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+::placeholder {
+    position: relative;
+    left: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29px;
+    display: flex;
+    color: #D3D3D3;
+
+}
+
+.header-form{
+    position: relative;
+}
+
+.pokedex-select {
+    position: relative;
+    width: 300px;
+    height: 48px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    color: #000;
+    font-size: 1.6em;
+}
+
+.pokedex-option {
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+
+} 
+
+.react-autosuggest__suggestions-container--open {
+    display: block;
+    position: absolute;
+    top: 23px;
+    width: 95%;
+    border: 1px solid #aaa;
+    background-color: rgba(0, 0, 0, 0.658);
+    color: #fff;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: 2;
+    max-height: 300px;
+    overflow: auto;
+    margin-top: 16px;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .react-autosuggest__suggestions-list{
+    list-style: none;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    cursor: pointer;
+  }
+  
+  .react-autosuggest__input{
+    width: 500px;
+  }
+  
+  .react-autosuggest__suggestion--highlighted {
+    background-color: rgb(255, 255, 255);
+    color: black;
+  }
+  
+
+/* MEDIAS QUERYS */
+
+/* mediun screen medias query */
+
+@media (min-width: 680px) and (max-width: 800px) {
+    .headerSearch-container{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+    }
+
+    .header-back--img {
+        position: absolute;
+        width: 300px;
+        height: 100px;
+        object-fit: contain;
+        background-size: contain;
+        /* ver imagen completa */
+        left: 15px;
+        top: 20px;
+    
+    } 
+    
+}
+
+@media (min-width: 800px) and (max-width: 1440px) {
+
+    .header-title {
+        position: relative;
+        max-width: 882px;
+        height: 40px;
+        /* left: 143px; */
+        /* top: 195px; */
+        font-family: 'Roboto' sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        display: block;
+        margin-top: 6em;
+        margin-bottom: 1.5em;
+    }
+
+    .header-back--img {
+        position: absolute;
+        width: 400px;
+        height: 100px;
+        object-fit: contain;
+        background-size: contain;
+        /* ver imagen completa */
+        left: 15px;
+        top: 20px;
+    
+    } 
+    
+
+    .headerSearch-container{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+        margin: 0 auto;
+    }
+
+    .header-form{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .inputSug {
+        position: relative;
+        width: 320px;
+        height: 60px;
+        font-size: 1.8em;
+        border-radius: 0;
+        margin: 0;
+    }
+
+::placeholder {
+    position: relative;
+    left: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    color: #D3D3D3;
+
+}
+
+.form__btn {
+    position: relative;
+    width: 210.48px;
+    height: 60px;
+    background: #D93F3F;
+    color: #fff;
+    text-align: center;
+    font-size: 1.6em;
+    margin: 0 -17px;
+}
+
+.pokedex-select {
+    position: relative;
+    width: 300px;
+    height: 60px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    color: #000;
+    font-size: 1.6em;
+}
+
+.react-autosuggest__suggestions-container--open {
+    display: block;
+    position: absolute;
+    top: 40px;
+    width: 61%;
+    border: 1px solid #aaa;
+    background-color: rgba(0, 0, 0, 0.658);
+    color: #fff;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: 2;
+    max-height: 300px;
+    overflow: auto;
+    margin-top: 16px;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+}
+

@@ -1,0 +1,374 @@
+.home__container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../../Home/fondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.home__img {
+    margin: 0 auto;
+    margin-top: 2.2em;
+    position: inherit;
+    max-width: 500px;
+    max-height: auto;
+    object-fit: contain;
+    background-position: center;
+    z-index: 1;
+}
+
+.home__container--info {
+    position: relative;
+    display: grid;
+    width: minmax(auto, 350px);
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    
+}
+
+.home__img--oak {
+    position: relative;
+    max-width: 320px;
+    min-width: 200px;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3; 
+    top: 28%;
+    left: 0%;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.home__wrapper {
+    grid-column: 2 / 4;
+    grid-row: 1 / 3;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.static-txt {
+    position: relative;
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    font-weight: 400;
+    color: #e51414;
+    text-align: center;
+    margin-top: .3em;
+}
+
+.home__wrapper .dynamic-txts{
+    
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    left: 20px;
+    margin-top: 0px;
+    overflow: hidden;
+    grid-column: 1 / 4;
+    /* border: 2px solid green; */
+    min-width: 300px;
+}
+
+.dynamic-txts li {
+    font-size : 1em;
+    font-weight: 700;
+    position: relative;
+    top: 0;
+    color: #ea0808;
+    animation: slide 20s steps(4) infinite;
+    width: 450px;
+}
+
+@keyframes slide {
+    100%{
+        top: -80px;
+    }
+}
+
+.dynamic-txts li span {
+    position: relative;
+}
+
+
+
+.dynamic-txts li span::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    left: 0;
+    width: 100%;
+    background: rgb(121,202,249);
+    border-left: 3px solid #e00404;
+    animation: typing 5s steps(80) infinite;
+}
+
+@keyframes typing {
+    100%{
+        left: 100%;
+        margin: 0 -35px 0 35px;
+    }
+}
+
+.home__form {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: -40px; 
+
+}
+
+.home__input {
+    width: 200px;
+    height: 30px;
+    border: none;
+    background: rgba(121, 202, 249, 0);
+    border-bottom: 2px solid #e00404;
+    color: #000;
+}
+
+.home__input:focus {
+    outline: none;
+}
+
+.home__input::placeholder {
+    left: 0;
+    font-size: 1.2em;
+    color: red;
+}
+
+.home__btn {
+    width: 100px;
+    height: 30px;
+    background-color: #e00404;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1em;
+    text-transform: uppercase;
+    transform: scale(1);
+    transition: background-color .5s ease, color .5s ease, transform .5s ease, box-shadow .5s ease;
+}
+
+.home__btn:hover {
+    background-color: #a21515;
+    color: #000;
+    box-shadow: 0 0 10px #a21515;
+}
+
+.home__btn:active {
+    transform: scale(0.9);
+}
+
+.pokeball__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2em;
+    width: 100%;
+    height: 40%;
+    gap: 1em;
+}
+
+.pokeball__container .image__pokeball {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: 0 10px;
+    animation: spin 2s linear infinite;
+}
+
+
+
+.pokemon__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+    margin-top: -15em;
+    gap: 1em;
+}
+
+.pokemon__container .image__pokemon{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: 0 10px;
+}
+
+/* medias querys */
+
+@media (min-width:600px) and (max-width: 700px) {
+    .home__wrapper .dynamic-txts{
+    
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        left: -50px;
+        margin-top: 0px;
+        overflow: hidden;
+        grid-column: 1 / 4;
+        /* border: 2px solid green; */
+        min-width: 300px;
+    }
+    
+}
+@media (min-width:700px) and (max-width: 800px) {
+    .home__wrapper .dynamic-txts{
+    
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        left: -60px;
+        margin-top: 0px;
+        overflow: hidden;
+        grid-column: 1 / 4;
+        /* border: 2px solid green; */
+        min-width: 300px;
+    }
+    
+}
+@media (min-width:800px) and (max-width: 900px) {
+    .home__wrapper .dynamic-txts{
+    
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        left: -70px;
+        margin-top: 0px;
+        overflow: hidden;
+        grid-column: 1 / 4;
+        /* border: 2px solid green; */
+        min-width: 300px;
+    }
+    
+}
+@media (min-width:900px) and (max-width: 1000px) {
+    .home__wrapper .dynamic-txts{
+    
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        left: -80px;
+        margin-top: 0px;
+        overflow: hidden;
+        grid-column: 1 / 4;
+        /* border: 2px solid green; */
+        min-width: 300px;
+    }
+    
+}
+@media (min-width:1000px) and (max-width: 1440px) {
+    .home__wrapper .dynamic-txts{
+    
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        left: -90px;
+        /* font-size: 2em; */
+        margin-top: 0px;
+        overflow: hidden;
+        grid-column: 1 / 4;
+        /* border: 2px solid green; */
+        min-width: 300px;
+    }
+    
+}
+
+
+@media (min-width: 674px) and (max-width: 1440px) {
+
+    .home__wrapper .dynamic-txts{
+    
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        left: -90px;
+        /* font-size: 2em; */
+        margin-top: 0px;
+        overflow: hidden;
+        grid-column: 1 / 4;
+        /* border: 2px solid green; */
+        min-width: 300px;
+    }
+    
+ 
+
+    .home__input {
+        width: 300px;
+        height: 40px;
+        border: none;
+        background-color: rgba(121, 202, 249, 0);
+        border-bottom: 2px solid #e00404;
+        color: #000;
+    }
+    
+    .home__input:focus {
+        outline: none;
+    }
+    
+    .home__input::placeholder {
+        left: 0;
+        font-size: 1.5em;
+    }
+
+    .home__btn {
+        width: 150px;
+        height: 40px;
+        background-color: #e00404;
+        color: #f5f5f5;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 1em;
+        text-transform: uppercase;
+        transform: scale(1);
+        transition: background-color .5s ease, color .5s ease, transform .5s ease, box-shadow .5s ease;
+    }
+
+    .static-txt {
+        position: relative;
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #e51414;
+        text-align: center;
+        margin-top: .3em;
+    }
+    
+    
+    
+}
