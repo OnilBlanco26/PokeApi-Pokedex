@@ -89,29 +89,7 @@ const FilteredPokemons = ({setPokemonInput}) => {
     
 
     
-    //   let locat = data.filter(p => p.name == e.target.value.trim());
-    //   let locatA
-    //   if(e.key == 'Enter') {
-        
-      
-    //     locatA = locat[0].name; 
-    //     console.log(`seC: ${locatA}`)
-    //     setPokemonInput(locatA)
-    //     navigate(`/pokedex/${locatA}`);
-        
-    //   } 
-    //   // selectLocations(locatA)
-    // }
-    
-
-
-    // const handleClick = (e) => {
-    //     var personajeActual = data.filter(p => p.name == e.target.value.trim());
-    
-      
-    //   let personaje = personajeActual[0].id;
-    //   setLocationInput(personaje)
-    // }
+   
     
     const obtenerData=()=>{
         const URL = `https://pokeapi.co/api/v2/pokemon?limit=2000`;
