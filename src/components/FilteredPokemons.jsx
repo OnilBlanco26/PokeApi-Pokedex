@@ -44,18 +44,11 @@ const FilteredPokemons = ({setPokemonInput}) => {
     }
     
     const renderSuggestion=(suggestion)=>(
-      <>
-      
-      <div className='sugerencia' onClick={()=>selectLocations(suggestion.id)}>
-        
+      <div className='sugerencia' onClick={(event) => handleSuggestionClick(event, suggestion)}>
         <ul className='suge__list'>
           <li className='suge__list-item'>{`${suggestion.name}`}</li>
-         
         </ul>
       </div>
-      {}
-      </>
-    
     );
     
     
@@ -77,22 +70,38 @@ const FilteredPokemons = ({setPokemonInput}) => {
     value,
     onChange
     };
-  
-    const eventEnter=(e)=>{
-    
-      let locat = data.filter(p => p.name == e.target.value.trim());
-      let locatA
-      if(e.key == 'Enter') {
-        
-      
-        locatA = locat[0].name; 
-        console.log(`seC: ${locatA}`)
+
+    const onSuggestionSelected = (event, { suggestion }) => {
+      let locat = data.filter(p => p.name == getSuggestionValue(suggestion));
+      let locatA = locat[0].name; 
+      setPokemonInput(locatA)
+      navigate(`/pokedex/${locatA}`);
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Enter') {
+        let locat = data.filter(p => p.name == event.target.value.trim());
+        let locatA = locat[0].name; 
         setPokemonInput(locatA)
         navigate(`/pokedex/${locatA}`);
-        
-      } 
-      // selectLocations(locatA)
+      }
     }
+    
+
+    
+    //   let locat = data.filter(p => p.name == e.target.value.trim());
+    //   let locatA
+    //   if(e.key == 'Enter') {
+        
+      
+    //     locatA = locat[0].name; 
+    //     console.log(`seC: ${locatA}`)
+    //     setPokemonInput(locatA)
+    //     navigate(`/pokedex/${locatA}`);
+        
+    //   } 
+    //   // selectLocations(locatA)
+    // }
     
 
 
@@ -111,7 +120,6 @@ const FilteredPokemons = ({setPokemonInput}) => {
         
           setLocations(response.data.results);
           setData(response.data.results);
-          console.log(response.data.results)
         })
       }
       
@@ -130,8 +138,8 @@ const FilteredPokemons = ({setPokemonInput}) => {
           onSuggestionsClearRequested={onSuggestionsClearRequested}
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
-          onSuggestionSelected={eventEnter}
+          onSuggestionSelected={onSuggestionSelected}
+          inputProps={{...inputProps, onKeyDown: handleKeyDown}}
  
          
          />
