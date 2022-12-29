@@ -703,7 +703,7 @@ border-radius: 4px 4px 0px 0px;
 
     
 }
-@media (min-width: 900px) and (max-width: 1440px) {
+@media (min-width: 900px) and (max-width: 1120px) {
     
     .poke__line {
         position: relative;
@@ -712,8 +712,36 @@ border-radius: 4px 4px 0px 0px;
     }
     .pokeMovements__line {
         position: absolute;
-        right: 30px;
+        right: 70px;
         width: 700px;
+        border: 1px solid #9F9F9F;
+    }
+    .pokeStatsHeader__line {
+        position: absolute;
+        right: 30px;
+        width: 600px;
+        border: 1px solid #9F9F9F;
+    }
+
+    .pokeInfo__img {
+        width: 170px;
+        position: relative;
+        top: -2em;
+    }
+    
+    
+}
+@media (min-width: 1120px) and (max-width: 1920px) {
+    
+    .poke__line {
+        position: relative;
+        width: 300px;
+        border: 1px solid #9F9F9F;
+    }
+    .pokeMovements__line {
+        position: absolute;
+        right: 70px;
+        width: 1000px;
         border: 1px solid #9F9F9F;
     }
     .pokeStatsHeader__line {
@@ -826,7 +854,7 @@ border-radius: 4px 4px 0px 0px;
     
 }
 
-@media (min-width: 800px) and (max-width: 1440px) {
+@media (min-width: 800px) and (max-width: 1920px) {
 
     .header-back--img {
         position: absolute;

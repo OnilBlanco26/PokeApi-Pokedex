@@ -216,7 +216,7 @@
     
 }
 
-@media (min-width: 800px) and (max-width: 1440px) {
+@media (min-width: 800px) and (max-width: 1920px) {
 
     .header-title {
         position: relative;
@@ -313,7 +313,7 @@
     display: block;
     position: absolute;
     top: 40px;
-    width: 61%;
+    width: 100%;
     border: 1px solid #aaa;
     background-color: rgba(0, 0, 0, 0.658);
     color: #fff;

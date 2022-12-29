@@ -50,7 +50,7 @@
     visibility: hidden;
 }
 
-@media (min-width: 650px) and (max-width: 1440px) {
+@media (min-width: 650px) and (max-width: 1920px) {
     .pagination__item {
         font-size: 1rem;
         width: 60px;

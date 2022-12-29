@@ -105,7 +105,7 @@ const Pokedex = () => {
         <FilteredPokemons     
           setPokemonInput = {setPokemonInput}
           />
-          <button className="form__btn">Search</button>
+          {/* <button className="form__btn">Search</button> */}
         </form>
         <select className="pokedex-select" onChange={handleChange} name="" id="">
           <option className="pokedex-option" value="All">All Pokemons</option>
