@@ -41,6 +41,21 @@ const PokedexInfo = () => {
             src={pokemon?.sprites.other["official-artwork"].front_default}
             alt=""
           />
+          <img
+            className="pokeInfo__img"
+            src={pokemon?.sprites.other["official-artwork"].front_shiny}
+            alt=""
+          />
+          <img
+            className="pokeInfo__img"
+            src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default}
+            alt=""
+          />
+          <img
+            className="pokeInfo__img"
+            src={pokemon?.sprites.back_shiny}
+            alt=""
+          />
         </div>
         <div className="pokemonInfo__container">
           <h3

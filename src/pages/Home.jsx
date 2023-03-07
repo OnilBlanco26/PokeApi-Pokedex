@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setTrainerGlobal } from "../store/slices/trainer.slice";
 import "../components/Pokedex/styles/home.css";
+import BattleVideo from "../components/BattleVideo";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,47 +16,66 @@ const Home = () => {
     navigate("/pokedex");
   };
 
+  const clickToActive = () => {
+    const pokeball = document.getElementById("pokeball");
+    const pokeScreen = document.querySelector(".poke-screen");
+    const form = document.querySelector(".home__form");
+    pokeball.classList.add("poke-hidden");
+    setInterval(() => {
+      pokeScreen.classList.add("poke-visible");
+    }, 1000);
+    setInterval(() => {
+      form.classList.add('form-visible')
+    }, 4000);
+  };
+
   return (
     <div className="home__container">
-      <img className="home__img" src="/Home/pokedexTitle.png" alt="" />
       <div className="home__container--info">
-        <img className="home__img--oak" src="/Home/profOak.png" alt="" />
-        <div className="home__wrapper">
-          <ul className="dynamic-txts">
-            <li>
-              <span>Welcome to the world of Pokemon!......</span>
-            </li>
-            <li>
-              <span>My name is Professor Oak!.....</span>
-            </li>
-            <li>
-              <span>I will guide you in your first steps.....</span>
-            </li>
-            <li>
-              <span>Give me your name to start.......</span>
-            </li>
-            <li>
-              <span></span>
-            </li>
-          </ul>
+        <div className="container-watchTV">
+          <img className="watchTV" src="../Home/watchTV.png" alt="" />
+          <h2 className="watchTV-title">WATCH NOW</h2>
         </div>
-          <form className="home__form" onSubmit={handleSubmit} action="">
-            <input className="home__input" id="name" type="text" placeholder="Your name here..."/>
-            <button className="home__btn" type="submit">
-              Start
-            </button>
-          </form>
-        <div className="static-txt">Professor Oak</div>
-      </div>
-      <div className="pokeball__container">
-        <img className="image__pokeball" src="/Home/pokeball.gif" alt="" />
-        <img className="image__pokeball" src="/Home/pokeball.gif" alt="" />
-        <img className="image__pokeball" src="/Home/pokeball.gif" alt="" />
-      </div>
-      <div className="pokemon__container">
-        <img className="image__pokemon" src="/Home/charmander.gif" alt="" />
-        <img className="image__pokemon" src="/Home/bulbasur.gif" alt="" />
-        <img className="image__pokemon" src="/Home/squirtle.gif" alt="" />
+        <div className="live__container">
+          <div className="live1">
+            <div className="text-container">
+              <div className="circle"></div>
+              <h3 className="text-live">LIVE</h3>
+            </div>
+            <img className="live1-img" src="../Home/Leon.gif" alt="" />
+          </div>
+          <div className="live2">
+            <img className="live2-img" src="../Home/Profesora.gif" alt="" />
+          </div>
+          <div className="imgsPoke">
+            <img
+              id="pokeball"
+              onClick={clickToActive}
+              className="live-pokeball"
+              src="../Home/pokeball.png"
+              alt=""
+            />
+            <img className="poke-screen" src="../Home/poke-screen.png" alt="" />
+            <div className="form__container">
+            <form className="home__form" onSubmit={handleSubmit} action="">
+              <input
+                className="home__input"
+                id="name"
+                type="text"
+                placeholder="Your name here..."
+              />
+              <button className="home__btn" type="submit">
+                Start
+              </button>
+            </form>
+          </div>
+          </div>
+        
+          <div className="live3">
+            <BattleVideo />
+            <h3 className="battle-title">POKEMON BATTLE</h3>
+          </div>
+        </div>
       </div>
     </div>
   );
