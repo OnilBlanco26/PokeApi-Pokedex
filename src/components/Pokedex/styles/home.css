@@ -326,6 +326,22 @@ body {
   font-weight: bold;
 }
 
+.pokedex__container {
+  grid-column: 1/13;
+  grid-row: 7/10;
+}
+
+.pokedex {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.pokedex-visible {
+  animation: grow 2s forwards;
+  opacity: 1;
+  visibility: visible;
+}
+
 
 
 /* } */

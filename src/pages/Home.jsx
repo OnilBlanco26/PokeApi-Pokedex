@@ -34,6 +34,7 @@ const Home = () => {
     const pokeballOpen = document.querySelector(".pokeball-open");
     const random = document.querySelector(".pokemon-random");
     const audio = new Audio("../Home/openPokeballSound.mp3");
+    const pokedex = document.querySelector(".pokedex");
     audio.loop = false;
     audio.volume = 0.2;
 
@@ -49,6 +50,12 @@ const Home = () => {
     setTimeout(() => {
       random.classList.add("random-visible");
     }, 4000);
+    setTimeout(() => {
+      pokeballOpen.classList.remove("pokeball-open-visible");
+    }, 6000);
+    setTimeout(() => {
+      pokedex.classList.add("pokedex-visible");
+    }, 6000);
 
     audio.addEventListener(
       "ended",
@@ -102,6 +109,10 @@ const Home = () => {
             </div>
           </div>
         </div>
+        
+      </div>
+      <div className="pokedex__container">
+        <img className="pokedex" src="../Home/pokedex.png" alt="" />
       </div>
     </div>
   );
