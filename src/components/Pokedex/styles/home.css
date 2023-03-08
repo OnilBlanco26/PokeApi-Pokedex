@@ -1,266 +1,49 @@
-.home__container {
-    background: #0099F7;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #F11712, #0099F7);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #F11712, #0099F7);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+/*
+==============================
+    * CSS TABLE CONTENT *
+==============================
+    1. GOOGLE FONT
+    2. VARIABLES CSS
+    3. BASE
+    4. REUSABLE CSS CLASSES
+    5. HEADER & NAV
+    6. BREAKPOINTS
+
+==============================
+    * END TABLE CONTENT *
+==============================
+
+*/
+
+
+/*====================== GOOGLE FONTS ====================*/
+
+/* @import url('') */
+
+/*====================== VARIABLES CSS ====================*/
+
+:root {
+
+  /* Typografia */
+  --body-font: 'Poppins', sans-serif;
+  --big-font-size: 2.5rem;
+  --medium-font-size: 1.5rem;
+  --small-font-size: 1rem;
+  --smaller-fonm-size: 0.8rem;
+
+  /* Grosores */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Margenes */
+  --mr-1: .5rem;
+  --mr-2: 1rem;
+  --mr-3: 1.5rem;
+  --mr-4: 2rem;
+  --mr-5: 2.5rem;
+
+  /* Background */
+  --background: #f5f5f5;
 }
-
-
-.live__container {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(20, 1fr);
-    grid-gap: 1rem;
-    position: relative;
-    
-}
-
-.poke-title {
-    grid-column: 7/15;
-    grid-row: 1/4;
-    width: 100%;
-}
-
-.pokeball__container {
-    grid-column: 9/13;
-    grid-row: 10/12;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: .5rem;
-    position: relative;
-    transition: 1s ease all;
-}
-
-  .pokeball {
-      position: relative;
-      transition: all 1s ease;
-      animation: 2s movercaja infinite;
-    }
-  
-  .pokeball-hidden {
-    animation: shrink 2s forwards;
-  }
-
-  .pokeball__container-hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  @keyframes grow {
-    0% {
-      transform: scale(0);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-    @keyframes shrink {
-      0% {
-        transform: scale(1) ;
-      }
-      100% {
-        transform: scale(0) rotate(360deg);
-      }
-    }
-
-
-    @keyframes movercaja {
-        50%{
-            transform: translateY(-.5rem);
-        }
-    }
-
-    .pokeball__container:before {
-        position: absolute;
-        content: '';
-        top: 200%;
-        left: 12%;
-        height: 10px;
-        width: 75%;
-        opacity: 0;
-        background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.336) 0%,
-        rgba(0, 0, 0, 0.432) 80%);
-        transition-duration: 1s;
-        border-radius: 50%;
-        opacity: 0.4;
-        transform: translateY(6px);
-        animation: 2s moversombra infinite;
-       
-    }
-    
-    @keyframes moversombra{
-        50%{
-            opacity: 1;
-            transform: translateY(.5rem);
-        }
-    }
-    
-  .pokeball-text {
-    position: relative;
-    font-size: 2rem;
-    color: #fff;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    text-shadow: 0 0 0.5rem #000;
-    text-align: center;
-  }
-
-  .pokeball-open__container {
-    grid-column: 9/13;
-    grid-row: 10/12;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: .5rem;
-    position: relative;
-    perspective: 1000px;
-    transform-style: preserve-3d;
-  }
-
-  .pokeball-open{
-    width: 80%;
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .pokeball-open-visible {
-    animation: grow 2s forwards;
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .pokemon-random {
-    position: absolute;
-    grid-column: 9/13;
-    grid-row: 10/12;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    opacity: 0;
-    visibility: hidden;
-    width: 100%;
-    perspective: 1000px;
-}
-
-.pokeQuiz__container {
-  width: 350px;
-  height: 280px;
-  background: none;
-  border-radius: 1rem;
-  box-shadow: 5px 2px 3px rgba(0, 0, 0, 0.432);
-  transform: perspective(1000px) translateZ(120px) translateY(0px) translateX(-300px);
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  position: relative;
-}
-
-.pokemon-random .pokemon-logo {
-  grid-column: 2/6;
-  width: 100%;
-  object-fit: cover;
-  align-self: center;
-  /* ponme su perspectiva hacia delante*/
-  z-index: 0;
-  transition: 1s ease filter;
-}
-
-.pokemon-random .pokemon-img {
-  grid-column: 3/5;
-  grid-row: 3/5;
-  width: 100%;
-  object-fit: cover;
-  /* ponme su perspectiva hacia delante*/
-  z-index: 0;
-  filter: brightness(0%);
-  transition: 1s ease filter;
-}
-
-
-.random-visible {
-  opacity: 1;
-  visibility: visible;
-  animation: grow 2s forwards;
-}
-
-
-.pokedex__container {
-    grid-column: 13/20;
-    grid-row: 7/12;
-  }
-  
-  .pokemon-interrogacion {
-    grid-column: 4/6;
-    grid-row: 2/4;
-    width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.pokemon-interrogacion--img {
-  position: relative;
-  left: 1em;
-  width: 50%;
-}
-
-.pokeQuiz-input__container {
-  position: absolute;
-  grid-column: 1/7;
-  grid-row: 5/7;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: .5rem;
-}
-
-.pokeQuiz-input::placeholder { 
-  color: black;
-  font-size: .7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.pokeQuiz-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.pokeQuiz-button:nth-child(1) {
-  background-color: #de2124;
-  color: white;
-  padding: 0.2rem .4rem;
-  border-radius: 0.2rem;
-  font-weight: bold;
-}
-
-.pokeQuiz-button:nth-child(2) {
-  background-color: #1e90ff;
-  color: white;
-  padding: 0.2rem .4rem;
-  border-radius: 0.2rem;
-  font-weight: bold;
-}
-
