@@ -29,32 +29,33 @@ const Home = () => {
   }, []);
 
   const clickToActive = () => {
-    const pokeball = document.getElementById("pokeball");
-    const pokeScreen = document.querySelector(".poke-screen");
-    const form = document.querySelector(".form__container");
-    const live3 = document.querySelector(".live3");
-    const live4 = document.querySelector(".live4");
-    const random = document.querySelector(".pokemon-random");
+    const pokeball = document.querySelector("pokeball");
+    // const pokeScreen = document.querySelector(".poke-screen");
+    // const form = document.querySelector(".form__container");
+    // const live3 = document.querySelector(".live3");
+    // const live4 = document.querySelector(".live4");
+    // const random = document.querySelector(".pokemon-random");
 
-    pokeball.classList.add("poke-hidden");
-    setInterval(() => {
-      pokeScreen.classList.add("poke-visible");
-    }, 1000);
+    console.log('me ejecute')
+    pokeball.classList.add("pokeball-hidden");
+    // setInterval(() => {
+    //   pokeScreen.classList.add("poke-visible");
+    // }, 1000);
     // setInterval(() => {
     //   form.classList.add("form-visible");
     // }, 4000);
-    setInterval(() => {
-      live4.classList.add("pokedex-visible");
-    }, 10000);
-    setInterval(() => {
-      live3.classList.add("poke-hidden");
-    }, 4000);
-    setInterval(() => {
-      random.classList.add("random-visible");
-    }
-    , 4000);
-    console.log(pokemon)
-  };
+  //   setInterval(() => {
+  //     live4.classList.add("pokedex-visible");
+  //   }, 10000);
+  //   setInterval(() => {
+  //     live3.classList.add("poke-hidden");
+  //   }, 4000);
+  //   setInterval(() => {
+  //     random.classList.add("random-visible");
+  //   }
+  //   , 4000);
+  //   console.log(pokemon)
+   };
 
   return (
     <div className="home__container">
@@ -63,7 +64,7 @@ const Home = () => {
           <img className="poke-title" src="../Home/pokedexTitle.png" alt="" />
           <div className="pokeball__container">
             <h3 className="pokeball-text">Click To Open</h3>
-            <img className="pokeball" src="../Home/pokeball.png" alt="" />
+            <img onClick={clickToActive} className="pokeball" src="../Home/pokeball.png" alt="" />
           </div>
           <div className="pokeball-open__container">
             <img className="pokeball-open" src="../Home/pokeball-open.png" alt="" />
@@ -76,4 +77,3 @@ const Home = () => {
 
 export default Home;
 
-// Welcome to the world of Pokemon! My name is Professor Oak! Give me your name to start
