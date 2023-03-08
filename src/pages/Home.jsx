@@ -70,7 +70,7 @@ const Home = () => {
       </div>
       <div className="pokeball-open__container">
         <img className="pokeball-open" src="../Home/pokeball-open.png" alt="" />
-        {/* <div className="pokemon-random">
+        <div className="pokemon-random">
           <div className="pokeQuiz__container">
             <img
               className="pokemon-logo"
@@ -101,7 +101,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
