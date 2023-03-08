@@ -144,8 +144,9 @@
   }
 
   .pokemon-random {
-    grid-column: 1/13;
-    grid-row: 1/5;
+    position: absolute;
+    grid-column: 9/13;
+    grid-row: 10/12;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,7 +158,7 @@
 }
 
 .pokemon-random img {
-    width: 50%;
+    width: 100%;
     object-fit: cover;
     /* ponme su perspectiva hacia delante*/
     transform: perspective(1000px) translateZ(120px) translateY(150px) translateX(0px);
@@ -166,4 +167,5 @@
 .random-visible {
   opacity: 1;
   visibility: visible;
+  animation: grow 2s forwards;
 }
