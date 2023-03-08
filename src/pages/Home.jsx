@@ -29,7 +29,7 @@ const Home = () => {
   }, []);
 
   const clickToActive = () => {
-    const pokeball = document.querySelector("pokeball");
+    const pokeball = document.querySelector(".pokeball");
     // const pokeScreen = document.querySelector(".poke-screen");
     // const form = document.querySelector(".form__container");
     // const live3 = document.querySelector(".live3");
@@ -54,7 +54,7 @@ const Home = () => {
   //     random.classList.add("random-visible");
   //   }
   //   , 4000);
-  //   console.log(pokemon)
+    console.log(pokemon)
    };
 
   return (

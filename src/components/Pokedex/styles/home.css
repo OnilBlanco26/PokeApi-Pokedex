@@ -41,9 +41,9 @@
 }
 
 .pokeball-hidden {
-    opacity: 0;
-    visibility: hidden;
-    animation: grow 1s forwards;
+  animation: shrink 5s forwards;
+  opacity: 0;
+  visibility: hidden;
 }
 
 @keyframes grow {
@@ -54,6 +54,14 @@
     100% {
       transform: scale(1);
       opacity: 1;
+    }
+  }
+  @keyframes shrink {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
     }
   }
 
