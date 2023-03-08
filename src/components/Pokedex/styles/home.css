@@ -40,13 +40,18 @@
     position: relative;
 }
 
-.pokeball-hidden {
-  animation: shrink 5s forwards;
-  opacity: 0;
-  visibility: hidden;
-}
+  .pokeball {
+      position: relative;
+      animation: 2s movercaja infinite;
+    }
+  
+  .pokeball-hidden {
+    opacity: 0;
+    visibility: hidden;
+    animation: shrink 5s forwards;
+  }
 
-@keyframes grow {
+  @keyframes grow {
     0% {
       transform: scale(0);
       opacity: 0;
@@ -56,21 +61,15 @@
       opacity: 1;
     }
   }
-  @keyframes shrink {
-    0% {
-      transform: scale(1);
+    @keyframes shrink {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(0);
+      }
     }
-    100% {
-      transform: scale(0);
-    }
-  }
 
-
-
-.pokeball {
-    position: relative;
-    animation: 2s movercaja infinite;
-  }
 
     @keyframes movercaja {
         50%{
