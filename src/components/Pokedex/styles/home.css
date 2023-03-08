@@ -143,5 +143,27 @@
     visibility: visible;
   }
 
+  .pokemon-random {
+    grid-column: 1/13;
+    grid-row: 1/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    perspective: 1000px;
+}
 
+.pokemon-random img {
+    width: 50%;
+    object-fit: cover;
+    /* ponme su perspectiva hacia delante*/
+    transform: perspective(1000px) translateZ(120px) translateY(150px) translateX(0px);
+}
 
+.random-visible {
+  opacity: 1;
+  visibility: visible;
+}

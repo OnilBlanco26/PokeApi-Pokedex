@@ -32,7 +32,7 @@ const Home = () => {
     const pokeball = document.querySelector(".pokeball");
     const pokeballContainer = document.querySelector(".pokeball__container");
     const pokeballOpen = document.querySelector(".pokeball-open");
-    // const random = document.querySelector(".pokemon-random");
+    const random = document.querySelector(".pokemon-random");
 
     console.log('me ejecute')
     pokeball.classList.add("pokeball-hidden");
@@ -54,10 +54,10 @@ const Home = () => {
   //   setInterval(() => {
   //     live3.classList.add("poke-hidden");
   //   }, 4000);
-  //   setInterval(() => {
-  //     random.classList.add("random-visible");
-  //   }
-  //   , 4000);
+    setInterval(() => {
+      random.classList.add("random-visible");
+    }
+    , 4000);
     console.log(pokemon)
    };
 
