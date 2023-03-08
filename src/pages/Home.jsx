@@ -30,14 +30,18 @@ const Home = () => {
 
   const clickToActive = () => {
     const pokeball = document.querySelector(".pokeball");
-    // const pokeScreen = document.querySelector(".poke-screen");
-    // const form = document.querySelector(".form__container");
-    // const live3 = document.querySelector(".live3");
-    // const live4 = document.querySelector(".live4");
+    const pokeballContainer = document.querySelector(".pokeball__container");
+    const pokeballOpen = document.querySelector(".pokeball-open");
     // const random = document.querySelector(".pokemon-random");
 
     console.log('me ejecute')
     pokeball.classList.add("pokeball-hidden");
+    setInterval(() => {
+      pokeballContainer.classList.add("pokeball__container-hidden");
+    }, 1000);
+    setInterval(() => {
+      pokeballOpen.classList.add("pokeball-open-visible");
+    }, 3000);
     // setInterval(() => {
     //   pokeScreen.classList.add("poke-visible");
     // }, 1000);
@@ -68,6 +72,9 @@ const Home = () => {
           </div>
           <div className="pokeball-open__container">
             <img className="pokeball-open" src="../Home/pokeball-open.png" alt="" />
+            <div className="pokemon-random">
+              <img src={pokemon?.sprites.other['official-artwork'].front_default} alt="" />
+            </div>
           </div>
         </div>
       </div>
