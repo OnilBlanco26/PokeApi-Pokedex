@@ -23,7 +23,6 @@ function VideoPlayer() {
   return (
     <>
     <img className='video-live' src={video} alt="" />
-
     </>
   );
 }

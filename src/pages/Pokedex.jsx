@@ -30,7 +30,7 @@ const Pokedex = () => {
         .catch((err) => console.log(err));
     } else {
       //Hacer la peticion a la api de todos los pokemones
-      const URL = "https://pokeapi.co/api/v2/pokemon?limit=2000";
+      const URL = `https://pokeapi.co/api/v2/pokemon?limit=2000`;
       axios
         .get(URL)
         .then((res) => {
