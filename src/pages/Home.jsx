@@ -9,6 +9,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [pokemonNames, setPokemonNames] = useState([]);
+  const [selectedPokemon, setSelectedPokemon] = useState("");
 
   const [pokemon, setPokemon] = useState();
 
@@ -19,32 +20,39 @@ const Home = () => {
     navigate("/pokedex");
   };
 
+  const handleItemClick = (name) => {
+    console.log("Hola funciono");
+    setSelectedPokemon(name);
+  };
+
   useEffect(() => {
     const numbers = [
       Math.floor(Math.random() * 1200),
       Math.floor(Math.random() * 1200),
-      Math.floor(Math.random() * 1200)
+      Math.floor(Math.random() * 1200),
     ];
     axios
       .all([
         axios.get(`https://pokeapi.co/api/v2/pokemon/${numbers[0]}`),
         axios.get(`https://pokeapi.co/api/v2/pokemon/${numbers[1]}`),
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${numbers[2]}`)
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${numbers[2]}`),
       ])
-      .then(axios.spread((res1, res2, res3) => {
-        setPokemon(res1.data)
-        const realPokemon = res1.data;
-        const fakePokemon1 = res2.data;
-        const fakePokemon2 = res3.data;
-        const pokemonNames = [
-          realPokemon.name,
-          fakePokemon1.name,
-          fakePokemon2.name
-        ];
-        // Shuffle the array of names
-        pokemonNames.sort(() => Math.random() - 0.5);
-        setPokemonNames(pokemonNames);
-      }))
+      .then(
+        axios.spread((res1, res2, res3) => {
+          setPokemon(res1.data);
+          const realPokemon = res1.data;
+          const fakePokemon1 = res2.data;
+          const fakePokemon2 = res3.data;
+          const pokemonNames = [
+            realPokemon.name,
+            fakePokemon1.name,
+            fakePokemon2.name,
+          ];
+          // Shuffle the array of names
+          pokemonNames.sort(() => Math.random() - 0.5);
+          setPokemonNames(pokemonNames);
+        })
+      )
       .catch((err) => console.log(err));
   }, []);
 
@@ -79,7 +87,7 @@ const Home = () => {
     }, 6000);
     setTimeout(() => {
       lista.classList.add("pokedex-visible");
-    }, 7000);
+    }, 6000);
 
     audio.addEventListener(
       "ended",
@@ -89,9 +97,8 @@ const Home = () => {
       },
       false
     );
-   
-    console.log(pokemon)
-   
+
+    console.log(pokemon);
   };
 
   return (
@@ -115,11 +122,14 @@ const Home = () => {
               src="../Home/Pokemon-logo.png"
               alt=""
             />
+            <div className="container__pokemon-img">
+
             <img
               className="pokemon-img"
               src={pokemon?.sprites.other["official-artwork"].front_default}
               alt=""
             />
+            </div>
             <div className="pokemon-interrogacion">
               <img
                 className="pokemon-interrogacion--img"
@@ -128,9 +138,29 @@ const Home = () => {
               />
             </div>
             <div className="pokeQuiz-input__container">
-             <h3 className={`poke-card__section--name color-${pokemon?.types[0].type.name}`}>
-               <span className="span-quiz">Pista:</span> <span className={`spanType border-${pokemon?.types[0].type.name}`}>{pokemon?.types[0].type.name}</span> 
-             </h3>
+              <h3
+                className={`textPista poke-card__section--name color-${pokemon?.types[0].type.name}`}
+              >
+                <span className="span-quiz">Pista:</span>{" "}
+                <span
+                  className={`spanType border-${pokemon?.types[0].type.name}`}
+                >
+                  {pokemon?.types[0].type.name}
+                </span>
+              </h3>
+              <ul className="pokedex-list">
+          {pokemonNames?.map((name) => (
+            <li
+              className={`list-item color-${pokemon?.types[0].type.name} ${
+                name === selectedPokemon ? "selected" : ""
+              }`}
+              key={name}
+              onClick={() => handleItemClick(name)}
+            >
+              {name}
+            </li>
+          ))}
+        </ul>
               <div className="pokeQuiz-buttons">
                 <button className="pokeQuiz-button">Adivinar</button>
                 <button className="pokeQuiz-button">Saltar</button>
@@ -139,14 +169,12 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="pokedex__container">
+      {/* <div className="pokedex__container">
         <img className="pokedex" src="../Home/pokedex.png" alt="" />
-        <ul className="pokedex-list">
-        {pokemonNames.map((name) => (
-            <li className="list-item" key={name}>{name}</li>
-          ))}
-        </ul>
-      </div>
+      
+    
+      </div> */}
+      
     </div>
   );
 };
