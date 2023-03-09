@@ -8,6 +8,7 @@ import axios from "axios";
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [pokemonNames, setPokemonNames] = useState([]);
 
   const [pokemon, setPokemon] = useState();
 
@@ -19,12 +20,31 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const number = Math.floor(Math.random() * 1200);
+    const numbers = [
+      Math.floor(Math.random() * 1200),
+      Math.floor(Math.random() * 1200),
+      Math.floor(Math.random() * 1200)
+    ];
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${number}`)
-      .then((res) => {
-        setPokemon(res.data);
-      })
+      .all([
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${numbers[0]}`),
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${numbers[1]}`),
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${numbers[2]}`)
+      ])
+      .then(axios.spread((res1, res2, res3) => {
+        setPokemon(res1.data)
+        const realPokemon = res1.data;
+        const fakePokemon1 = res2.data;
+        const fakePokemon2 = res3.data;
+        const pokemonNames = [
+          realPokemon.name,
+          fakePokemon1.name,
+          fakePokemon2.name
+        ];
+        // Shuffle the array of names
+        pokemonNames.sort(() => Math.random() - 0.5);
+        setPokemonNames(pokemonNames);
+      }))
       .catch((err) => console.log(err));
   }, []);
 
@@ -35,6 +55,8 @@ const Home = () => {
     const random = document.querySelector(".pokemon-random");
     const audio = new Audio("../Home/openPokeballSound.mp3");
     const pokedex = document.querySelector(".pokedex");
+    const listpoke = document.querySelector(".pokedex__container");
+    const lista = document.querySelector(".pokedex-list");
     audio.loop = false;
     audio.volume = 0.2;
 
@@ -52,10 +74,12 @@ const Home = () => {
     }, 4000);
     setTimeout(() => {
       pokeballOpen.classList.remove("pokeball-open-visible");
+      pokedex.classList.add("pokedex-visible");
+      listpoke.classList.add("pokedex-visible");
     }, 6000);
     setTimeout(() => {
-      pokedex.classList.add("pokedex-visible");
-    }, 6000);
+      lista.classList.add("pokedex-visible");
+    }, 7000);
 
     audio.addEventListener(
       "ended",
@@ -65,7 +89,9 @@ const Home = () => {
       },
       false
     );
-    console.log(pokemon);
+   
+    console.log(pokemon)
+   
   };
 
   return (
@@ -73,7 +99,12 @@ const Home = () => {
       <img className="poke-title" src="../Home/pokedexTitle.png" alt="" />
       <div className="pokeball__container">
         <h3 className="pokeball-text">Click To Open</h3>
-        <img onClick={clickToActive} className="pokeball" src="../Home/pokeball.png" alt="Pokeball" />
+        <img
+          onClick={clickToActive}
+          className="pokeball"
+          src="../Home/pokeball.png"
+          alt="Pokeball"
+        />
       </div>
       <div className="pokeball-open__container">
         <img className="pokeball-open" src="../Home/pokeball-open.png" alt="" />
@@ -97,11 +128,9 @@ const Home = () => {
               />
             </div>
             <div className="pokeQuiz-input__container">
-              <input
-                className="pokeQuiz-input"
-                type="text"
-                placeholder="Ingresar Nombre"
-              />
+             <h3 className={`poke-card__section--name color-${pokemon?.types[0].type.name}`}>
+               <span className="span-quiz">Pista:</span> <span className={`spanType border-${pokemon?.types[0].type.name}`}>{pokemon?.types[0].type.name}</span> 
+             </h3>
               <div className="pokeQuiz-buttons">
                 <button className="pokeQuiz-button">Adivinar</button>
                 <button className="pokeQuiz-button">Saltar</button>
@@ -109,10 +138,14 @@ const Home = () => {
             </div>
           </div>
         </div>
-        
       </div>
       <div className="pokedex__container">
         <img className="pokedex" src="../Home/pokedex.png" alt="" />
+        <ul className="pokedex-list">
+        {pokemonNames.map((name) => (
+            <li className="list-item" key={name}>{name}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

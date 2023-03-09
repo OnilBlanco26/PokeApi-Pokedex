@@ -329,17 +329,60 @@ body {
 .pokedex__container {
   grid-column: 1/13;
   grid-row: 7/10;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(12, 25px);
+  grid-template-rows: repeat(12, 20px);
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .pokedex {
   opacity: 0;
   visibility: hidden;
+  grid-column: 1/13;
+  grid-row: 1/13;
+  position: absolute;
+  z-index: 0;
+}
+
+
+.pokedex-list {
+  position: relative;
+  top: -.5em;
+  left: -.8em;
+  grid-column: 3/6;
+  grid-row: 5/7;
+  z-index: 1;
+  visibility: hidden;
+
 }
 
 .pokedex-visible {
   animation: grow 2s forwards;
   opacity: 1;
   visibility: visible;
+}
+
+
+.list-item {
+  margin-bottom: .1rem;
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-weight-bold);
+  border: 2px groove rgba(77, 77, 77, 0.568)
+}
+
+.spanType {
+  border: 4px double;
+  padding: 0 .5em;
+  border-radius: 30px;
+  font-size: var(--small-font-size);
+}
+
+.span-quiz {
+  color: white;
+  font-size: var(--small-font-size);
 }
 
 
