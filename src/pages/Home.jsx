@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { setTrainerGlobal } from "../store/slices/trainer.slice";
 import "../components/Pokedex/styles/home.css";
 import axios from "axios";
+import Loader from "./Loader";
 
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [pokemonNames, setPokemonNames] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState("");
+  const [newPokemon, setNewPokemon] = useState(0);
+  const [loading, setLoading] = useState(false); // Estado de carga
 
   const [pokemon, setPokemon] = useState();
 
@@ -21,15 +24,39 @@ const Home = () => {
   };
 
   const handleItemClick = (name) => {
-    console.log("Hola funciono");
     setSelectedPokemon(name);
   };
 
+  const handleAdivinarClick = () => {
+    const pokemonImg = document.querySelector(".pokemon-img");
+    if (!selectedPokemon) {
+      return console.log("debes seleccionar un pokemon");
+    }
+    if (selectedPokemon === pokemon?.name) {
+      console.log("Pokemon correcto");
+      pokemonImg.classList.add("img-filter");
+    } else {
+      console.log("Pokemon incorrecto");
+    }
+  };
+
+  const handlePokemonClick = () => {
+    setNewPokemon(newPokemon + 1);
+
+    const btnSaltar = document.querySelector(".pokeQuiz-button--saltar");
+
+    // btnSaltar.classList.add("disabled-btn");
+    // setTimeout(() => {
+    //   btnSaltar.classList.remove("disabled-btn");
+    // }, 3000);
+  };
+
   useEffect(() => {
+    setLoading(true); // Establece el estado de carga en verdadero
     const numbers = [
-      Math.floor(Math.random() * 1200),
-      Math.floor(Math.random() * 1200),
-      Math.floor(Math.random() * 1200),
+      Math.floor(Math.random() * 1000),
+      Math.floor(Math.random() * 1000),
+      Math.floor(Math.random() * 1000),
     ];
     axios
       .all([
@@ -53,8 +80,9 @@ const Home = () => {
           setPokemonNames(pokemonNames);
         })
       )
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false)); // Establece el estado de carga en falso
+  }, [newPokemon]);
 
   const clickToActive = () => {
     const pokeball = document.querySelector(".pokeball");
@@ -75,7 +103,7 @@ const Home = () => {
     }, 1000);
     setTimeout(() => {
       pokeballOpen.classList.add("pokeball-open-visible");
-      audio.play();
+      // audio.play();
     }, 3000);
     setTimeout(() => {
       random.classList.add("random-visible");
@@ -103,6 +131,7 @@ const Home = () => {
 
   return (
     <div className="home__container">
+      
       <img className="poke-title" src="../Home/pokedexTitle.png" alt="" />
       <div className="pokeball__container">
         <h3 className="pokeball-text">Click To Open</h3>
@@ -122,14 +151,14 @@ const Home = () => {
               src="../Home/Pokemon-logo.png"
               alt=""
             />
-            <div className="container__pokemon-img">
-
-            <img
-              className="pokemon-img"
-              src={pokemon?.sprites.other["official-artwork"].front_default}
-              alt=""
-            />
-            </div>
+           {loading ? <> <Loader /> </> : <><div className="container__pokemon-img">
+              <img
+                className="pokemon-img"
+                src={pokemon?.sprites.other["official-artwork"].front_default}
+                alt=""
+              />
+            </div></>}
+            
             <div className="pokemon-interrogacion">
               <img
                 className="pokemon-interrogacion--img"
@@ -149,21 +178,31 @@ const Home = () => {
                 </span>
               </h3>
               <ul className="pokedex-list">
-          {pokemonNames?.map((name) => (
-            <li
-              className={`list-item color-${pokemon?.types[0].type.name} ${
-                name === selectedPokemon ? "selected" : ""
-              }`}
-              key={name}
-              onClick={() => handleItemClick(name)}
-            >
-              {name}
-            </li>
-          ))}
-        </ul>
+                {pokemonNames?.map((name) => (
+                  <li
+                    className={`list-item color-${
+                      pokemon?.types[0].type.name
+                    } ${name === selectedPokemon ? "selected" : ""}`}
+                    key={name}
+                    onClick={() => handleItemClick(name)}
+                  >
+                    {name}
+                  </li>
+                ))}
+              </ul>
               <div className="pokeQuiz-buttons">
-                <button className="pokeQuiz-button">Adivinar</button>
-                <button className="pokeQuiz-button">Saltar</button>
+                <button
+                  className="pokeQuiz-button--adivinar"
+                  onClick={handleAdivinarClick}
+                >
+                  Adivinar
+                </button>
+                <button
+                  className="pokeQuiz-button--saltar"
+                  onClick={handlePokemonClick}
+                >
+                  Saltar
+                </button>
               </div>
             </div>
           </div>
@@ -174,7 +213,6 @@ const Home = () => {
       
     
       </div> */}
-      
     </div>
   );
 };

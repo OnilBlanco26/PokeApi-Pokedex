@@ -241,13 +241,17 @@ body {
   align-items: center;
 }
 
-.pokemon-random .pokemon-img {
+.pokemon-img {
   width: 75%;
   object-fit: cover;
   /* ponme su perspectiva hacia delante*/
   z-index: 0;
-  filter: brightness(0%);
-  transition: 1s ease filter;
+  filter: brightness(7%);
+  transition: 3s ease filter;
+}
+
+.img-filter {
+  filter: brightness(100%);
 }
 
 
@@ -339,7 +343,7 @@ body {
   top: 1rem;
 }
 
-.pokeQuiz-button:nth-child(1) {
+.pokeQuiz-button--adivinar {
   background-color: #de2124;
   color: white;
   padding: 0.2rem .4rem;
@@ -348,13 +352,36 @@ body {
   font-weight: bold;
 }
 
-.pokeQuiz-button:nth-child(2) {
+.pokeQuiz-button--saltar {
   background-color: #1e90ff;
   color: white;
   font-size: 1.4em;
   padding: 0.2rem .4rem;
   border-radius: 0.2rem;
   font-weight: bold;
+  transform: scale(1);
+  transition:background-color .7s ease, transform .7s ease, color .7s ease;
+}
+
+/* .pokeQuiz-button--saltar:hover {
+  transform: scale(1.2);
+  
+} */
+.pokeQuiz-button--saltar:active {
+  transform: scale(1.2);
+  color: #1e90ff;
+  background-color: white;
+}
+
+
+
+.disabled-btn {
+  pointer-events: none;
+  background-color: rgba(141, 141, 141, 0.685);
+}
+
+.enabled-btn {
+  pointer-events: auto;
 }
 
 .pokedex__container {
@@ -410,15 +437,31 @@ body {
   pointer-events: auto;
   text-align: center;
   color: black;
+  transform: scale(1);
+  transition: color .5s ease, transform .5s ease;
 }
 
 .list-item:hover {
   background: white;
+  transform: scale(1.1);
 }
 
 .selected {
-  background-color: rgb(255, 255, 255);
+  background-color: #ffcb05;
   font-weight: bold;
+}
+
+.Loader__container {
+  grid-column: 2/6;
+  grid-row: 3/6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Loader { 
+
+
 }
 
 
