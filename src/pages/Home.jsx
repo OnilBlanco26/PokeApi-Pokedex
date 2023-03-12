@@ -87,6 +87,7 @@ const Home = () => {
   const clickToActive = () => {
     const pokeball = document.querySelector(".pokeball");
     const pokeballContainer = document.querySelector(".pokeball__container");
+    const pokeballOpenContainer = document.querySelector(".pokeball-open__container")
     const pokeballOpen = document.querySelector(".pokeball-open");
     const random = document.querySelector(".pokemon-random");
     const audio = new Audio("../Home/openPokeballSound.mp3");
@@ -101,6 +102,9 @@ const Home = () => {
     setTimeout(() => {
       pokeballContainer.classList.add("pokeball__container-hidden");
     }, 1000);
+    setTimeout(() => {
+      pokeballOpenContainer.classList.add("pokeballContainer-visible");
+    },1000);
     setTimeout(() => {
       pokeballOpen.classList.add("pokeball-open-visible");
       // audio.play();
