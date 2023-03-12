@@ -37,6 +37,7 @@ const Home = () => {
       pokemonImg.classList.add("img-filter");
     } else {
       console.log("Pokemon incorrecto");
+      setNewPokemon(newPokemon + 1);
     }
   };
 
